@@ -1,0 +1,13 @@
+﻿@{
+    List<int> idsLibros = Context.Session.GetObject<List<int>>("IDLIBROS");
+}
+<h3>
+    @if(idsLibros == null)
+            {
+                <span>Carrito : 0</span>
+            }
+            else
+            {
+                <span>Carrito: @idsLibros.Count</span>
+            }
+</h3>

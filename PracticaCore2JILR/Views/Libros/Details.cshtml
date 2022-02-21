@@ -1,0 +1,98 @@
+﻿@model Libro
+@{ 
+    List<int> listaSession = Context.Session.GetObject<List<int>>("IDLIBROS");
+}
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Detalles de @Model.Titulo</h1>
+
+<div>
+    <h4>Libro</h4>
+    <h2>@ViewData["MENSJAE"]</h2>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdLiBRO)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdLiBRO)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Autor)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Autor)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Editorial)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Editorial)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Portada)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Portada)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Resumen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Resumen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdGenero)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdGenero)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (listaSession == null)
+    {
+        <a class="btn btn-outline-danger"
+           asp-action="AñadirCarrito"
+           asp-route-idlibro="@Model.IdLiBRO">
+            Comprar
+        </a>
+    }
+    else
+    {
+        if (listaSession.Contains(Model.IdLiBRO))
+        {
+            <p>Ya esta en carrito</p>
+        }
+        else
+        {
+            <a class="btn btn-outline-danger"
+               asp-action="Libros"
+               asp-route-idlibro="@Model.IdLiBRO">
+                Comprar
+            </a>
+        }
+
+    }
+    <a asp-action="Libros"
+       class="btn btn-outline-info">
+        Back to List
+    </a>
+
+
+</div>

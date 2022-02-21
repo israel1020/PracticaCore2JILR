@@ -1,0 +1,17 @@
+﻿<h1>
+    Perfil Usuario
+</h1>
+<div>
+    <h2>
+        Nombre: @Context.User.Identity.Name
+    </h2>
+    <h2>
+        Email: @Context.User.FindFirst("Email").Value
+    </h2>
+    <h2>
+        Email: @Context.User.FindFirst("Pass").Value
+    </h2>
+    <h2>
+        Email: @Context.User.FindFirst("Foto").Value
+    </h2>
+</div>
